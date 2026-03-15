@@ -166,12 +166,30 @@ document.addEventListener('DOMContentLoaded', function() {
                 return;
             }
 
-            // Show thank you page
-            thankYou.classList.add('active');
-            document.body.style.overflow = 'hidden';
+            // Submit to Formspree
+            var formData = new FormData(contactForm);
+            var submitBtn = contactForm.querySelector('button[type="submit"]');
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Sending...';
 
-            // Reset form
-            contactForm.reset();
+            fetch('https://formspree.io/f/mykndddq', {
+                method: 'POST',
+                body: formData,
+                headers: { 'Accept': 'application/json' }
+            }).then(function(response) {
+                if (response.ok) {
+                    thankYou.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                    contactForm.reset();
+                } else {
+                    alert('Something went wrong. Please try again or email adichter@meritleelaw.com directly.');
+                }
+            }).catch(function() {
+                alert('Something went wrong. Please try again or email adichter@meritleelaw.com directly.');
+            }).finally(function() {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Submit';
+            });
         });
     }
 
