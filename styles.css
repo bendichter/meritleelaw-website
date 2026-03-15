@@ -544,7 +544,7 @@ body {
 
 .section-header {
     text-align: center;
-    margin-bottom: 64px;
+    margin-bottom: 48px;
 }
 
 .section-label {
@@ -868,6 +868,19 @@ body {
     border-radius: 50%;
     font-size: 0.75rem;
     flex-shrink: 0;
+}
+
+.arrangement-bullets li {
+    padding-left: 16px;
+    position: relative;
+}
+
+.arrangement-bullets li::before {
+    content: '\2022';
+    position: absolute;
+    left: 0;
+    color: var(--navy-800);
+    font-size: 1.2em;
 }
 
 /* Attorneys Section */
@@ -1369,15 +1382,15 @@ body {
 
 .footer-content {
     display: grid;
-    grid-template-columns: 1fr 2fr;
-    gap: 80px;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 60px;
     margin-bottom: 60px;
 }
 
 .footer-brand .logo-text {
     font-size: 1.5rem;
     color: var(--white);
-    margin-bottom: 16px;
+    margin-bottom: 6px;
     display: block;
 }
 
@@ -1387,9 +1400,7 @@ body {
 }
 
 .footer-links {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 40px;
+    display: contents;
 }
 
 .footer-col h4 {
