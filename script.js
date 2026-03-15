@@ -1,12 +1,12 @@
 /**
- * Dichter Law - Website Interactions
+ * MeritLee Law - Website Interactions
  */
 
 document.addEventListener('DOMContentLoaded', function() {
     // Navigation scroll behavior
-    const nav = document.getElementById('nav');
-    const navToggle = document.getElementById('nav-toggle');
-    const navMenu = document.getElementById('nav-menu');
+    var nav = document.getElementById('nav');
+    var navToggle = document.getElementById('nav-toggle');
+    var navMenu = document.getElementById('nav-menu');
 
     // Scroll detection for navbar
     function handleScroll() {
@@ -26,9 +26,13 @@ document.addEventListener('DOMContentLoaded', function() {
         navToggle.classList.toggle('active');
     });
 
-    // Close mobile menu when clicking a link
+    // Close mobile menu when clicking a link (but not dropdown trigger on mobile)
     navMenu.querySelectorAll('a').forEach(function(link) {
-        link.addEventListener('click', function() {
+        link.addEventListener('click', function(e) {
+            // On mobile, don't close if it's the dropdown trigger
+            if (window.innerWidth <= 768 && link.classList.contains('nav-dropdown-trigger')) {
+                return;
+            }
             navMenu.classList.remove('active');
             navToggle.classList.remove('active');
         });
@@ -45,12 +49,15 @@ document.addEventListener('DOMContentLoaded', function() {
     // Smooth scroll for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
         anchor.addEventListener('click', function(e) {
+            var href = this.getAttribute('href');
+            if (href === '#') return;
+
             e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
+            var target = document.querySelector(href);
             if (target) {
-                const headerOffset = 80;
-                const elementPosition = target.getBoundingClientRect().top;
-                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                var headerOffset = 80;
+                var elementPosition = target.getBoundingClientRect().top;
+                var offsetPosition = elementPosition + window.pageYOffset - headerOffset;
 
                 window.scrollTo({
                     top: offsetPosition,
@@ -61,15 +68,15 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // Intersection Observer for fade-in animations
-    const observerOptions = {
+    var observerOptions = {
         root: null,
         rootMargin: '0px',
         threshold: 0.1
     };
 
-    const fadeElements = document.querySelectorAll('.section-header, .about-text, .about-stats, .service-card, .contract-intro, .contract-services, .contract-arrangements, .why-card, .cta-card, .hero-card');
+    var fadeElements = document.querySelectorAll('.section-header, .about-text, .about-sidebar, .service-card, .service-main, .contract-intro, .contract-services, .contract-arrangements, .why-card, .cta-card, .hero-card, .contact-info-section, .contact-form-wrapper');
 
-    const fadeObserver = new IntersectionObserver(function(entries) {
+    var fadeObserver = new IntersectionObserver(function(entries) {
         entries.forEach(function(entry) {
             if (entry.isIntersecting) {
                 entry.target.style.opacity = '1';
@@ -87,37 +94,37 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // Stagger animation for grid items
-    const gridContainers = document.querySelectorAll('.services-grid, .why-grid, .contract-grid');
+    var gridContainers = document.querySelectorAll('.services-grid, .why-grid, .contract-grid, .services-intro');
 
     gridContainers.forEach(function(container) {
-        const items = container.children;
+        var items = container.children;
         Array.from(items).forEach(function(item, index) {
             item.style.transitionDelay = (index * 0.1) + 's';
         });
     });
 
     // Counter animation for stats
-    const stats = document.querySelectorAll('.stat-number');
+    var stats = document.querySelectorAll('.stat-number');
 
-    const counterObserver = new IntersectionObserver(function(entries) {
+    var counterObserver = new IntersectionObserver(function(entries) {
         entries.forEach(function(entry) {
             if (entry.isIntersecting) {
-                const stat = entry.target;
-                const finalValue = stat.textContent;
+                var stat = entry.target;
+                var finalValue = stat.textContent;
 
                 // Only animate if it's a number
                 if (!isNaN(parseInt(finalValue))) {
-                    const endValue = parseInt(finalValue);
-                    const duration = 2000;
-                    const startTime = performance.now();
+                    var endValue = parseInt(finalValue);
+                    var duration = 2000;
+                    var startTime = performance.now();
 
                     function updateCounter(currentTime) {
-                        const elapsed = currentTime - startTime;
-                        const progress = Math.min(elapsed / duration, 1);
+                        var elapsed = currentTime - startTime;
+                        var progress = Math.min(elapsed / duration, 1);
 
                         // Easing function
-                        const easeOutQuart = 1 - Math.pow(1 - progress, 4);
-                        const currentValue = Math.floor(easeOutQuart * endValue);
+                        var easeOutQuart = 1 - Math.pow(1 - progress, 4);
+                        var currentValue = Math.floor(easeOutQuart * endValue);
 
                         stat.textContent = currentValue + (finalValue.includes('+') ? '+' : '');
 
@@ -140,4 +147,41 @@ document.addEventListener('DOMContentLoaded', function() {
     stats.forEach(function(stat) {
         counterObserver.observe(stat);
     });
+
+    // Contact Form Submission
+    var contactForm = document.getElementById('contact-form-el');
+    var thankYou = document.getElementById('thank-you');
+    var thankYouClose = document.getElementById('thank-you-close');
+
+    if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // Basic validation
+            var name = document.getElementById('form-name').value.trim();
+            var email = document.getElementById('form-email').value.trim();
+            var matter = document.getElementById('form-matter').value;
+
+            if (!name || !email || !matter) {
+                return;
+            }
+
+            // Show thank you page
+            thankYou.classList.add('active');
+            document.body.style.overflow = 'hidden';
+
+            // Reset form
+            contactForm.reset();
+        });
+    }
+
+    if (thankYouClose) {
+        thankYouClose.addEventListener('click', function(e) {
+            e.preventDefault();
+            thankYou.classList.remove('active');
+            document.body.style.overflow = '';
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    }
 });
