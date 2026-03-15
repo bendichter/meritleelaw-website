@@ -694,6 +694,13 @@ body {
     z-index: -1;
 }
 
+.about-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    margin-top: 64px;
+}
+
 .stat {
     padding: 32px;
     background: var(--white);

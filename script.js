@@ -74,7 +74,7 @@ document.addEventListener('DOMContentLoaded', function() {
         threshold: 0.1
     };
 
-    var fadeElements = document.querySelectorAll('.section-header, .about-text, .about-sidebar, .service-card, .service-main, .contract-intro, .contract-services, .contract-arrangements, .why-card, .cta-card, .hero-card, .contact-info-section, .contact-form-wrapper');
+    var fadeElements = document.querySelectorAll('.section-header, .about-text, .about-sidebar, .about-stats, .service-card, .service-main, .contract-intro, .contract-services, .contract-arrangements, .why-card, .cta-card, .hero-card, .contact-info-section, .contact-form-wrapper');
 
     var fadeObserver = new IntersectionObserver(function(entries) {
         entries.forEach(function(entry) {
