@@ -214,16 +214,83 @@ strong {
     justify-content: space-between;
 }
 
-.logo-text {
-    font-family: var(--font-heading);
-    font-size: 1.75rem;
-    font-weight: 600;
-    color: var(--white);
+/* Logo */
+.logo {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.logo-meritlee {
+    font-family: 'Bodoni Moda', serif;
+    font-size: 28px;
+    font-weight: 400;
+    color: #f0ede6;
+    letter-spacing: 0.08em;
+    line-height: 1;
+    transform: scaleX(0.8);
+    transform-origin: left;
     transition: color var(--transition-base);
 }
 
-.nav.scrolled .logo-text {
+.nav.scrolled .logo-meritlee {
     color: var(--navy-800);
+}
+
+.logo-bottom {
+    display: flex;
+    align-items: center;
+    margin-top: 2px;
+}
+
+.logo-law {
+    font-family: 'Bodoni Moda', serif;
+    font-size: 10px;
+    font-weight: 400;
+    color: #5a8a6a;
+    letter-spacing: 0.55em;
+    text-transform: uppercase;
+    transition: color var(--transition-base);
+}
+
+.logo-line {
+    width: 76px;
+    height: 1px;
+    background: linear-gradient(to right, #c9a96e, #e8c98a);
+    margin-left: 8px;
+}
+
+/* Footer logo */
+.logo-footer .logo-meritlee {
+    font-size: 32px;
+    color: var(--white);
+}
+
+.logo-footer .logo-law {
+    font-size: 12px;
+}
+
+.logo-footer .logo-line {
+    width: 88px;
+}
+
+.logo-footer {
+    margin-bottom: 12px;
+}
+
+/* Thank you page logo */
+.thank-you-logo .logo-meritlee {
+    font-size: 48px;
+    color: var(--white);
+}
+
+.thank-you-logo .logo-law {
+    font-size: 16px;
+}
+
+.thank-you-logo .logo-line {
+    width: 120px;
+    margin-left: 12px;
 }
 
 .nav-menu {
@@ -1387,12 +1454,6 @@ body {
     margin-bottom: 60px;
 }
 
-.footer-brand .logo-text {
-    font-size: 1.5rem;
-    color: var(--white);
-    margin-bottom: 6px;
-    display: block;
-}
 
 .footer-brand p {
     color: rgba(255, 255, 255, 0.6);
