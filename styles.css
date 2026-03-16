@@ -1689,6 +1689,11 @@ body {
         max-width: 250px;
     }
 
+    .about-stats {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
     .services-grid {
         grid-template-columns: 1fr;
     }
