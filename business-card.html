@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MeritLee Law - Business Cards</title>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500;6..96,600&family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #e8e4dd;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 60px 20px;
+    font-family: 'Inter', sans-serif;
+    gap: 80px;
+  }
+
+  h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px;
+    color: #333;
+    margin-bottom: -40px;
+    text-align: center;
+  }
+
+  .card-pair {
+    display: flex;
+    gap: 60px;
+    align-items: center;
+  }
+
+  .label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: #888;
+    text-align: center;
+    margin-bottom: 12px;
+  }
+
+  /* Standard US business card: 3.5 x 2 inches at 96dpi = 336 x 192 */
+  .card {
+    width: 336px;
+    height: 192px;
+    border-radius: 4px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.12), 0 2px 8px rgba(0,0,0,0.08);
+    overflow: hidden;
+    position: relative;
+  }
+
+  /* ============ FRONT ============ */
+  .card-front {
+    background: #0b1525;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 32px;
+  }
+
+  .card-front .logo {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .card-front .logo-meritlee {
+    font-family: 'Bodoni Moda', serif;
+    font-size: 36px;
+    font-weight: 600;
+    color: #f0ede6;
+    letter-spacing: 0.08em;
+    line-height: 1;
+    transform: scaleX(0.8);
+    transform-origin: left;
+  }
+
+  .card-front .logo-bottom {
+    display: flex;
+    align-items: center;
+    margin-top: 3px;
+  }
+
+  .card-front .logo-law {
+    font-family: 'Bodoni Moda', serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: #5a8a6a;
+    letter-spacing: 0.55em;
+  }
+
+  .card-front .logo-line {
+    width: 100px;
+    height: 1px;
+    background: linear-gradient(to right, #c9a96e, #e8c98a);
+    margin-left: 10px;
+  }
+
+  .card-front .tagline {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 8.5px;
+    color: rgba(240, 237, 230, 0.5);
+    letter-spacing: 0.12em;
+    margin-top: 16px;
+    text-transform: lowercase;
+    font-style: italic;
+  }
+
+  /* ============ BACK ============ */
+  .card-back {
+    background: #ffffff;
+    display: flex;
+    flex-direction: column;
+    padding: 24px 28px;
+    position: relative;
+  }
+
+  .card-back::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(to right, #c9a96e, #e8c98a, #c9a96e);
+  }
+
+  .back-name {
+    font-family: 'Bodoni Moda', serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: #0b1525;
+    letter-spacing: 0.04em;
+    margin-bottom: 2px;
+  }
+
+  .back-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 9.5px;
+    color: #5a8a6a;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    margin-bottom: 14px;
+  }
+
+  .back-details {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    flex: 1;
+  }
+
+  .back-detail {
+    font-size: 7.5px;
+    color: #555;
+    line-height: 1.4;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .back-detail .detail-label {
+    font-weight: 500;
+    color: #0b1525;
+    min-width: 36px;
+    font-size: 6.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .back-divider {
+    width: 100%;
+    height: 1px;
+    background: #e8e4dd;
+    margin: 8px 0;
+  }
+
+  .back-tagline {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 8px;
+    color: #0b1525;
+    font-style: italic;
+    letter-spacing: 0.04em;
+    margin-bottom: 6px;
+  }
+
+  .back-areas {
+    font-size: 6.5px;
+    color: #888;
+    letter-spacing: 0.06em;
+  }
+
+  .back-logo-small {
+    position: absolute;
+    top: 16px;
+    right: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .back-logo-small .logo-meritlee {
+    font-family: 'Bodoni Moda', serif;
+    font-size: 11px;
+    font-weight: 600;
+    color: #0b1525;
+    letter-spacing: 0.08em;
+    line-height: 1;
+    transform: scaleX(0.8);
+    transform-origin: left;
+  }
+
+  .back-logo-small .logo-bottom {
+    display: flex;
+    align-items: center;
+    margin-top: 1px;
+  }
+
+  .back-logo-small .logo-law {
+    font-family: 'Bodoni Moda', serif;
+    font-size: 4px;
+    font-weight: 600;
+    color: #5a8a6a;
+    letter-spacing: 0.55em;
+  }
+
+  .back-logo-small .logo-line {
+    width: 28px;
+    height: 0.5px;
+    background: linear-gradient(to right, #c9a96e, #e8c98a);
+    margin-left: 3px;
+  }
+</style>
+</head>
+<body>
+
+  <h2>MeritLee Law &mdash; Business Card</h2>
+
+  <div class="card-pair">
+    <div>
+      <div class="label">Front</div>
+      <div class="card card-front">
+        <div class="logo">
+          <span class="logo-meritlee">MERITLEE</span>
+          <span class="logo-bottom">
+            <span class="logo-law">LAW</span>
+            <span class="logo-line"></span>
+          </span>
+        </div>
+        <div class="tagline">Rigorous in court. Grounded in character.</div>
+      </div>
+    </div>
+
+    <div>
+      <div class="label">Back</div>
+      <div class="card card-back">
+        <div class="back-name">Anna Dichter</div>
+        <div class="back-title">Founder &amp; Principal Attorney</div>
+        <div class="back-details">
+          <div class="back-detail">
+            <span class="detail-label">Phone</span>
+            <span>202-670-5033</span>
+          </div>
+          <div class="back-detail">
+            <span class="detail-label">Email</span>
+            <span>adichter@meritleelaw.com</span>
+          </div>
+          <div class="back-detail">
+            <span class="detail-label">Web</span>
+            <span>meritleelaw.com</span>
+          </div>
+          <div class="back-detail">
+            <span class="detail-label">Office</span>
+            <span>Fairfax, Virginia</span>
+          </div>
+        </div>
+        <div class="back-divider"></div>
+<div class="back-areas">Immigration Law &nbsp;&middot;&nbsp; Federal Civil Litigation &nbsp;&middot;&nbsp; Business Disputes</div>
+        <div class="back-logo-small">
+          <span class="logo-meritlee">MERITLEE</span>
+          <span class="logo-bottom">
+            <span class="logo-law">LAW</span>
+            <span class="logo-line"></span>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
