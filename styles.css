@@ -743,6 +743,7 @@ body {
     max-width: 700px;
     margin: 0 auto 48px;
     line-height: 1.7;
+    font-style: italic;
 }
 
 .services-intro {
