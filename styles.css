@@ -704,6 +704,8 @@ body {
     grid-template-columns: repeat(3, 1fr);
     gap: 32px;
     margin-top: 64px;
+    max-width: 100%;
+    overflow: hidden;
 }
 
 .stat {
@@ -1563,6 +1565,10 @@ body {
         gap: 48px;
     }
 
+    .about-stats {
+        gap: 16px;
+    }
+
     .services-intro {
         grid-template-columns: 1fr;
         gap: 24px;
@@ -1757,11 +1763,19 @@ body {
     }
 
     .stat {
-        padding: 24px;
+        padding: 16px;
     }
 
     .stat-number {
-        font-size: 2.5rem;
+        font-size: 2rem;
+    }
+
+    .stat-label {
+        font-size: 0.7rem;
+    }
+
+    .about-stats {
+        gap: 12px;
     }
 
     .service-card {
