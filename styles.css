@@ -353,48 +353,28 @@ strong {
     color: var(--navy-800) !important;
 }
 
-/* Google Translate Widget */
-.translate-widget {
-    margin-left: 0;
+/* Language Toggle */
+.lang-toggle .lang-link {
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 4px;
+    padding: 4px 10px;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    color: rgba(255, 255, 255, 0.9);
+    transition: border-color var(--transition-fast), color var(--transition-fast);
 }
 
-.translate-widget .goog-te-gadget {
-    font-size: 0;
+.nav.scrolled .lang-toggle .lang-link {
+    border-color: var(--gray-300);
+    color: var(--gray-700);
 }
 
-.translate-widget .goog-te-gadget-simple {
-    background: transparent !important;
-    border: 1px solid rgba(255, 255, 255, 0.4) !important;
-    border-radius: 4px !important;
-    padding: 6px 12px !important;
-    font-size: 0.8125rem !important;
-    cursor: pointer;
+.lang-toggle .lang-link:hover {
+    border-color: var(--gold-400);
+    color: var(--gold-400);
 }
 
-.nav.scrolled .translate-widget .goog-te-gadget-simple {
-    border-color: var(--gray-300) !important;
-}
-
-.translate-widget .goog-te-gadget-simple .goog-te-menu-value,
-.translate-widget .goog-te-gadget-simple .goog-te-menu-value span,
-.translate-widget .goog-te-gadget-simple span {
-    color: rgba(255, 255, 255, 0.9) !important;
-    font-size: 0.8125rem !important;
-    font-family: var(--font-body) !important;
-}
-
-.nav.scrolled .translate-widget .goog-te-gadget-simple .goog-te-menu-value,
-.nav.scrolled .translate-widget .goog-te-gadget-simple .goog-te-menu-value span,
-.nav.scrolled .translate-widget .goog-te-gadget-simple span {
-    color: var(--gray-700) !important;
-}
-
-.translate-widget .goog-te-gadget-simple .goog-te-menu-value img,
-.translate-widget .goog-te-gadget img {
-    display: none !important;
-}
-
-/* Hide Google Translate top bar */
 .goog-te-banner-frame {
     display: none !important;
 }
@@ -1636,7 +1616,7 @@ body {
         color: var(--gold-400) !important;
     }
 
-    .translate-menu-item {
+    .lang-toggle {
         margin-top: 16px;
     }
 
@@ -1776,7 +1756,7 @@ body {
     .nav,
     .hero-scroll,
     .btn,
-    .translate-widget {
+    .lang-toggle {
         display: none;
     }
 
